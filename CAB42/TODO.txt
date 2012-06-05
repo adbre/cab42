@@ -1,0 +1,5 @@
+﻿* CHG: Output listview - Use Icon images from Windows.
+
+* CHG: Add the possibility to add registry keys.
+
+* CHG: The XML replacement list should be a drop-down list of existing variables.

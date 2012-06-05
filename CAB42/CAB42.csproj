@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2DE97C17-A2B9-4448-A1C8-30B82EA48560}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>C42A</RootNamespace>
+    <AssemblyName>CAB42</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CAB42\BuildMessage.cs" />
+    <Compile Include="CAB42\BuildMessageCollection.cs" />
+    <Compile Include="CAB42\BuildProfile.cs" />
+    <Compile Include="CAB42\BuildProfileCollection.cs" />
+    <Compile Include="CAB42\BuildMessageType.cs" />
+    <Compile Include="CAB42\BuildProfileTask.cs" />
+    <Compile Include="CAB42\BuildTaskContext.cs" />
+    <Compile Include="CAB42\CabwizBuildContext.cs" />
+    <Compile Include="CAB42\CabwizTextWriter.cs" />
+    <Compile Include="CAB42\Cabwiz\AddRegFlags.cs" />
+    <Compile Include="CAB42\FeedbackTextWriter.cs" />
+    <Compile Include="CAB42\IBuildResult.cs" />
+    <Compile Include="CAB42\IBuildFeedback.cs" />
+    <Compile Include="CAB42\IBuildTask.cs" />
+    <Compile Include="CAB42\Cabwiz\RegistryValueTypes.cs" />
+    <Compile Include="CAB42\Cabwiz\CEShortcutsSection.cs" />
+    <Compile Include="CAB42\Cabwiz\CEShortcutItem.cs" />
+    <Compile Include="CAB42\Cabwiz\AddRegItem.cs" />
+    <Compile Include="CAB42\Cabwiz\AddRegSection.cs" />
+    <Compile Include="CAB42\Cabwiz\RegistryHives.cs" />
+    <Compile Include="CAB42\ICabwizBuildTask.cs" />
+    <Compile Include="CAB42\RegistryKeyValueCollection.cs" />
+    <Compile Include="CAB42\RegistryKeyCollection.cs" />
+    <Compile Include="CAB42\ExcludeRuleOptions.cs" />
+    <Compile Include="CAB42\OutputDirectoryInfo.cs" />
+    <Compile Include="CAB42\OutputFileInfo.cs" />
+    <Compile Include="CAB42\OutputFileSystemInfo.cs" />
+    <Compile Include="CAB42\OutputShortcutInfo.cs" />
+    <Compile Include="CAB42\ProjectInfo.cs" />
+    <Compile Include="CAB42\ProjectInfo.Static.cs" />
+    <Compile Include="CAB42\RegistryKey.cs" />
+    <Compile Include="CAB42\RegistryKeyValue.cs" />
+    <Compile Include="CAB42\BuildFeedbackBase.cs" />
+    <Compile Include="CAB42\UserVariable.cs" />
+    <Compile Include="CAB42\UserVariableCollection.cs" />
+    <Compile Include="CAB42\Windows.Forms\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProfileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProfileControl.Designer.cs">
+      <DependentUpon>BuildProfileControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProjectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProjectControl.Designer.cs">
+      <DependentUpon>BuildProjectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProjectOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProjectOutputControl.Designer.cs">
+      <DependentUpon>BuildProjectOutputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProjectSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildProjectSettingsControl.Designer.cs">
+      <DependentUpon>BuildProjectSettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Cabwiz\CabwizApplication.cs" />
+    <Compile Include="CAB42\Windows.Forms\BuildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\BuildForm.Designer.cs">
+      <DependentUpon>BuildForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Cabwiz\CEDeviceSection.cs" />
+    <Compile Include="CAB42\Cabwiz\CEStringsSection.cs" />
+    <Compile Include="CAB42\Cabwiz\CopyFileFlags.cs" />
+    <Compile Include="CAB42\Cabwiz\CopyFileItem.cs" />
+    <Compile Include="CAB42\Cabwiz\CopyFileListSection.cs" />
+    <Compile Include="CAB42\Cabwiz\DefaultInstallSection.cs" />
+    <Compile Include="CAB42\Cabwiz\DestinationDir.cs" />
+    <Compile Include="CAB42\Cabwiz\DestionationDirSection.cs" />
+    <Compile Include="CAB42\Cabwiz\InformationFileIgnoreAttribute.cs" />
+    <Compile Include="CAB42\Cabwiz\InformationFileQuoteAttribute.cs" />
+    <Compile Include="CAB42\Cabwiz\InformationFileSection.cs" />
+    <Compile Include="CAB42\Cabwiz\InformationFileIgnoreIfEmptyAttribute.cs" />
+    <Compile Include="CAB42\Cabwiz\SourceDiskFile.cs" />
+    <Compile Include="CAB42\Cabwiz\SourceDiskName.cs" />
+    <Compile Include="CAB42\Cabwiz\SourceDisksFileSection.cs" />
+    <Compile Include="CAB42\Cabwiz\SourceDisksNamesSection.cs" />
+    <Compile Include="CAB42\Cabwiz\StringsSection.cs" />
+    <Compile Include="CAB42\Cabwiz\VersionSection.cs" />
+    <Compile Include="CAB42\Windows.Forms\CAB42.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\CAB42.Designer.cs">
+      <DependentUpon>CAB42.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Cabwiz\InformationFile.cs" />
+    <Compile Include="CAB42\ProjectOutput.cs" />
+    <Compile Include="CAB42\ExcludeRule.cs" />
+    <Compile Include="CAB42\ExcludeRuleCollection.cs" />
+    <Compile Include="CAB42\Windows.Forms\AddBuildProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\AddBuildProfileForm.Designer.cs">
+      <DependentUpon>AddBuildProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\LicenseBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\LicenseBox.Designer.cs">
+      <DependentUpon>LicenseBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyValueEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyValueEditForm.Designer.cs">
+      <DependentUpon>RegistryKeyValueEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyValueListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyValueListControl.Designer.cs">
+      <DependentUpon>RegistryKeyValueListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyEditForm.Designer.cs">
+      <DependentUpon>RegistryKeyEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\RegistryKeyListControl.Designer.cs">
+      <DependentUpon>RegistryKeyListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\XmlReplacementEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\XmlReplacementEditForm.Designer.cs">
+      <DependentUpon>XmlReplacementEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\XmlReplacementListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\XmlReplacementListControl.Designer.cs">
+      <DependentUpon>XmlReplacementListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\UserVariableEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\UserVariableEditForm.Designer.cs">
+      <DependentUpon>UserVariableEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\UserVariableListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\UserVariableListControl.Designer.cs">
+      <DependentUpon>UserVariableListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\ExcludeRuleEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\ExcludeRuleEditForm.Designer.cs">
+      <DependentUpon>ExcludeRuleEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\ExcludeListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\ExcludeListControl.Designer.cs">
+      <DependentUpon>ExcludeListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\IncludeRuleEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\IncludeRuleEditForm.Designer.cs">
+      <DependentUpon>IncludeRuleEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\IncludeRuleListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAB42\Windows.Forms\IncludeRuleListControl.Designer.cs">
+      <DependentUpon>IncludeRuleListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CAB42\IncludeRule.cs" />
+    <Compile Include="CAB42\IncludeRuleCollection.cs" />
+    <Compile Include="CAB42\XmlFileRewriter.cs" />
+    <Compile Include="CAB42\XmlReplacementRule.cs" />
+    <Compile Include="CAB42\XmlReplacementRuleCollection.cs" />
+    <Compile Include="CSharp\SizeFormatStandards.cs" />
+    <Compile Include="Win32\ShellExtension.cs" />
+    <Compile Include="Win32\ShellIcon.cs" />
+    <Compile Include="CSharp\FileUtils.cs" />
+    <Compile Include="CSharp\ListViewColumnSorter.cs" />
+    <Compile Include="CSharp\ListViewExtensions.cs" />
+    <Compile Include="CSharp\SizeFormat.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CAB42\Windows.Forms\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\BuildProfileControl.resx">
+      <DependentUpon>BuildProfileControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\BuildProjectControl.resx">
+      <DependentUpon>BuildProjectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\BuildProjectOutputControl.resx">
+      <DependentUpon>BuildProjectOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\BuildProjectSettingsControl.resx">
+      <DependentUpon>BuildProjectSettingsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\CAB42.resx">
+      <DependentUpon>CAB42.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\BuildForm.resx">
+      <DependentUpon>BuildForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\AddBuildProfileForm.resx">
+      <DependentUpon>AddBuildProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\LicenseBox.resx">
+      <DependentUpon>LicenseBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\RegistryKeyValueEditForm.resx">
+      <DependentUpon>RegistryKeyValueEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\RegistryKeyValueListControl.resx">
+      <DependentUpon>RegistryKeyValueListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\RegistryKeyEditForm.resx">
+      <DependentUpon>RegistryKeyEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\RegistryKeyListControl.resx">
+      <DependentUpon>RegistryKeyListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\XmlReplacementEditForm.resx">
+      <DependentUpon>XmlReplacementEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\XmlReplacementListControl.resx">
+      <DependentUpon>XmlReplacementListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\UserVariableEditForm.resx">
+      <DependentUpon>UserVariableEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\UserVariableListControl.resx">
+      <DependentUpon>UserVariableListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\ExcludeRuleEditForm.resx">
+      <DependentUpon>ExcludeRuleEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\ExcludeListControl.resx">
+      <DependentUpon>ExcludeListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\IncludeRuleEditForm.resx">
+      <DependentUpon>IncludeRuleEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CAB42\Windows.Forms\IncludeRuleListControl.resx">
+      <DependentUpon>IncludeRuleListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brick_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tag_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CAB42\Cabwiz\SpecialFolderMacros.cs" />
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

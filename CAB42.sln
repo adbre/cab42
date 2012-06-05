@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAB42", "CAB42\CAB42.csproj", "{2DE97C17-A2B9-4448-A1C8-30B82EA48560}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CAB42.Setup", "CAB42.Setup\CAB42.Setup.vdproj", "{DDCF10D1-BCD9-4A0F-BD80-582381DAAA87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DE97C17-A2B9-4448-A1C8-30B82EA48560}.Debug|x86.ActiveCfg = Debug|x86
+		{2DE97C17-A2B9-4448-A1C8-30B82EA48560}.Debug|x86.Build.0 = Debug|x86
+		{2DE97C17-A2B9-4448-A1C8-30B82EA48560}.Release|x86.ActiveCfg = Release|x86
+		{2DE97C17-A2B9-4448-A1C8-30B82EA48560}.Release|x86.Build.0 = Release|x86
+		{DDCF10D1-BCD9-4A0F-BD80-582381DAAA87}.Debug|x86.ActiveCfg = Debug
+		{DDCF10D1-BCD9-4A0F-BD80-582381DAAA87}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
