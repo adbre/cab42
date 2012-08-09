@@ -35,9 +35,6 @@
 
         private static int RunConsole(string[] args)
         {
-            // Create a console window
-            AllocConsole();
-
             try
             {
                 if (args.Length == 2 && args[0] == "build")
@@ -63,6 +60,8 @@
 
         private static void StartWinFormsApplication(string file)
         {
+            FreeConsole();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             using (var f = new CAB42.Windows.Forms.CAB42())
@@ -86,6 +85,9 @@
         }
 
         [System.Runtime.InteropServices.DllImport("kernel32.dll")]
-        private static extern bool AllocConsole(); 
+        private static extern bool AllocConsole();
+
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+        private static extern bool FreeConsole(); 
     }
 }
