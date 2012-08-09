@@ -18,8 +18,11 @@ namespace C42A.CAB42
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Xml.Serialization;
 
     partial class ProjectInfo
@@ -140,6 +143,58 @@ namespace C42A.CAB42
 
             // failover
             return null;
+        }
+
+        public static ProjectInfo Open(ProgramOptions options)
+        {
+            if (options == null) throw new ArgumentNullException("options");
+            if (string.IsNullOrEmpty(options.FileName)) throw new ArgumentException("FileName is null or empty.");
+
+            var result = File.Exists(options.FileName) ? Open(options.FileName) : New(options.FileName);
+            
+            foreach (var variable in options.Variables)
+            {
+                result.GlobalUserVariables[variable.Key] = new UserVariable(variable.Key, variable.Value);
+
+                result.SetSysVariable(variable.Key, variable.Value);
+            }
+
+            return result;
+        }
+
+        private void SetSysVariable(string key, string value)
+        {
+            switch (key)
+            {
+                case "Version":
+                    var match = Regex.Match(value, @"^v(?<major>[0-9]+)(\.(?<minor>[0-9]+)(\.(?<build>[0-9]+)(\.(?<revision>[0-9]+))?)?)?(\-(?<releaseName>.*))?$");
+                    if (match.Success)
+                    {
+                        var invariant = CultureInfo.InvariantCulture;
+                        this.ProjectVersion = new Version(
+                            Convert.ToInt32(match.Groups["major"].Value, invariant),
+                            match.Groups["minor"].Success ? Convert.ToInt32(match.Groups["minor"].Value, invariant) : 0,
+                            match.Groups["build"].Success ? Convert.ToInt32(match.Groups["build"].Value, invariant) : 0,
+                            match.Groups["revision"].Success ? Convert.ToInt32(match.Groups["revision"].Value, invariant) : 0
+                            );
+
+                        if (match.Groups["releaseName"].Success)
+                            this.ReleaseName = match.Groups["releaseName"].Value;
+
+                        this.ReleaseName = match.Value;
+                    }
+                    else
+                    {
+                        Version version;
+                        if (Version.TryParse(value, out version)) this.ProjectVersion = version;
+                        else this.ReleaseName = value;
+                    }
+                    break;
+
+                case "ReleaseName":
+                    this.ReleaseName = value;
+                    break;
+            }
         }
     }
 }

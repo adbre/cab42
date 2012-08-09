@@ -3,3 +3,6 @@ obj/
 *.suo
 *.user
 _ReSharper.*/
+/TestResults/
+/CAB42.Setup/Debug/
+/CAB42.Setup/Release/

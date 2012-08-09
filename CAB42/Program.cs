@@ -1,7 +1,6 @@
 ﻿namespace C42A
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
@@ -17,30 +16,24 @@
         [STAThread]
         private static int Main(string[] args)
         {
-            if (args.Length == 1 && File.Exists(args[0]))
-            {
-                StartWinFormsApplication(args[0]);
-            }
-            else if (args.Length == 0)
-            {
-                StartWinFormsApplication(null);
-            }
+            var options = ProgramOptions.Parse(args);
+            if (options.StartWindowsFormsApplication)
+                StartWinFormsApplication(options.FileName);
             else
             {
-                return RunConsole(args);
+                return RunConsole(options);
             }
 
             return 0;
         }
 
-        private static int RunConsole(string[] args)
+        private static int RunConsole(ProgramOptions options)
         {
             try
             {
-                if (args.Length == 2 && args[0] == "build")
+                if (!string.IsNullOrWhiteSpace(options.FileName))
                 {
-                    Build(args[1]);
-                    return 0;
+                    Build(ProjectInfo.Open(options));
                 }
 
                 PrintHelp();
@@ -72,12 +65,11 @@
             }
         }
 
-        private static void Build(string file)
+        private static void Build(ProjectInfo projectInfo)
         {
-            var buildProject = ProjectInfo.Open(file);
             using (var buildContext = new CabwizBuildContext())
             {
-                var tasks = buildProject.CreateBuildTasks();
+                var tasks = projectInfo.CreateBuildTasks();
 
                 var feedback = new BuildFeedbackBase(Console.Out);
                 buildContext.Build(tasks, feedback);
@@ -88,6 +80,6 @@
         private static extern bool AllocConsole();
 
         [System.Runtime.InteropServices.DllImport("kernel32.dll")]
-        private static extern bool FreeConsole(); 
+        private static extern bool FreeConsole();
     }
 }
