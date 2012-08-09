@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Windows.Forms;
     using System.Xml.Serialization;
@@ -16,41 +17,60 @@
         [STAThread]
         private static int Main(string[] args)
         {
-            if (args.Length > 0 && args[0] == "build")
+            if (args.Length == 1 && File.Exists(args[0]))
             {
-                AllocConsole();
-
-                if (args.Length != 2) Console.WriteLine("cab42.exe build PATH");
-
-                try
-                {
-                    Build(args[1]);
-                }
-                catch (Exception error)
-                {
-                    Console.Error.WriteLine(error.ToString());
-                    return 1;
-                }
-
-                return 0;
+                StartWinFormsApplication(args[0]);
             }
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            using (var f = new global::C42A.CAB42.Windows.Forms.CAB42())
+            else if (args.Length == 0)
             {
-                if (args != null && args.Length > 0)
-                {
-                    if (args.Length == 1)
-                    {
-                        f.OpenFileOnShow = args[0];
-                    }
-                }
-
-                Application.Run(f);
+                StartWinFormsApplication(null);
+            }
+            else
+            {
+                return RunConsole(args);
             }
 
             return 0;
+        }
+
+        private static int RunConsole(string[] args)
+        {
+            // Create a console window
+            AllocConsole();
+
+            try
+            {
+                if (args.Length == 2 && args[0] == "build")
+                {
+                    Build(args[1]);
+                    return 0;
+                }
+
+                PrintHelp();
+                return 2;
+            }
+            catch (Exception error)
+            {
+                Console.Error.WriteLine(error.ToString());
+                return 1;
+            }
+        }
+
+        private static void PrintHelp()
+        {
+            Console.WriteLine("cab42.exe [build] [PATH]");
+        }
+
+        private static void StartWinFormsApplication(string file)
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            using (var f = new CAB42.Windows.Forms.CAB42())
+            {
+                if (file != null) f.OpenFileOnShow = file;
+
+                Application.Run(f);
+            }
         }
 
         private static void Build(string file)
