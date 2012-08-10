@@ -26,7 +26,7 @@ namespace Tests
             }
 
             [TestMethod]
-            public void SetProjectVersionAndReleaseName()
+            public void VersionDoesNotSetReleaseName()
             {
                 var options = new ProgramOptions() { FileName = @"NonExistingFile.c42", };
                 options.Variables.Add("Version", "v1.2.3.4-5-abc");
@@ -34,19 +34,17 @@ namespace Tests
                 var projectInfo = ProjectInfo.Open(options);
 
                 Assert.AreEqual(new Version(1, 2, 3, 4), projectInfo.ProjectVersion);
-                Assert.AreEqual("v1.2.3.4-5-abc", projectInfo.ReleaseName);
+                Assert.AreEqual(null, projectInfo.ReleaseName);
             }
 
             [TestMethod]
-            public void GitSha1()
+            [ExpectedException(typeof(FormatException))]
+            public void VersionBadFormat()
             {
                 var options = new ProgramOptions() { FileName = @"NonExistingFile.c42", };
                 options.Variables.Add("Version", "a1b2c3e4f5g6h7i8j9k0");
 
-                var projectInfo = ProjectInfo.Open(options);
-
-                Assert.AreEqual(null, projectInfo.ProjectVersion);
-                Assert.AreEqual("a1b2c3e4f5g6h7i8j9k0", projectInfo.ReleaseName);
+                ProjectInfo.Open(options);
             }
 
             [TestMethod]

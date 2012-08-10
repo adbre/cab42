@@ -177,18 +177,14 @@ namespace C42A.CAB42
                             match.Groups["build"].Success ? Convert.ToInt32(match.Groups["build"].Value, invariant) : 0,
                             match.Groups["revision"].Success ? Convert.ToInt32(match.Groups["revision"].Value, invariant) : 0
                             );
-
-                        if (match.Groups["releaseName"].Success)
-                            this.ReleaseName = match.Groups["releaseName"].Value;
-
-                        this.ReleaseName = match.Value;
                     }
                     else
                     {
                         Version version;
-                        if (Version.TryParse(value, out version)) this.ProjectVersion = version;
-                        else this.ReleaseName = value;
+                        if (!Version.TryParse(value, out version)) throw new FormatException(string.Format("Could not extract version information from input: {0}", value));
+                        this.ProjectVersion = version;
                     }
+
                     break;
 
                 case "ReleaseName":
