@@ -31,6 +31,27 @@ See the INSTALL file
 Usage
 -----
 
+    $ cab42 build MyProject.c42
+
+
+Overwrite variables
+
+    $ cab42 build MyProject.c42 --set-variable Version 2.1
+
+this sets the project's $(Version) variable to "2.1"
+
+
+Defining a new variable
+
+    $ branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
+    $ branch_name=${branch_name##refs/heads/}
+    $ cab42 build MyProject.c42 --set-variable GitBranch ${branch_name}
+
+This example will define a new variable `GitBranch` with the value
+set to the currently checked-out branch name (empty if not inside a git
+repository).
+
+
 **Information tab**
 
 Define variables that CAB42 should use. Remember that you need to define where
