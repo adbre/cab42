@@ -1,0 +1,11 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <ProjectToBuild Include="./CAB42.sln" />
+    </ItemGroup>
+    <Target Name="Build">
+        <MSBuild Projects="@(ProjectToBuild)" Properties="Configuration=Release" Targets="Build" />
+    </Target>
+    <Target Name="Clean">
+        <MSBuild Projects="@(ProjectToBuild)" Properties="Configuration=Release" Targets="Clean" />
+    </Target>
+</Project>

@@ -5,4 +5,4 @@ frameworkPath="/c/Windows/Microsoft.NET/Framework/"
 
 msbuildexe="${frameworkPath}${frameworkVersion}/msbuild.exe"
 
-"${frameworkPath}${frameworkVersion}/msbuild.exe" CAB42.sln
+"${frameworkPath}${frameworkVersion}/msbuild.exe" build-targets.proj
