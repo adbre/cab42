@@ -34,6 +34,7 @@
                 if (!string.IsNullOrWhiteSpace(options.FileName))
                 {
                     Build(ProjectInfo.Open(options));
+                    return 0;
                 }
 
                 PrintHelp();
