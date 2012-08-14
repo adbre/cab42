@@ -8,6 +8,7 @@ Note: Make sure msysgit is installed.
 It can be obtained from http://git-scm.com
 
     $ git clone https://adambrengesjo@bitbucket.org/adambrengesjo/cab42.git
+    $ cd cab42
     $ ./build.sh
     $ ./install.sh
     
