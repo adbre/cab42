@@ -154,15 +154,14 @@ namespace C42A.CAB42
             
             foreach (var variable in options.Variables)
             {
+                if (result.SetSysVariable(variable.Key, variable.Value)) continue;
                 result.GlobalUserVariables[variable.Key] = new UserVariable(variable.Key, variable.Value);
-
-                result.SetSysVariable(variable.Key, variable.Value);
             }
 
             return result;
         }
 
-        private void SetSysVariable(string key, string value)
+        private bool SetSysVariable(string key, string value)
         {
             switch (key)
             {
@@ -185,12 +184,14 @@ namespace C42A.CAB42
                         this.ProjectVersion = version;
                     }
 
-                    break;
+                    return true;
 
                 case "ReleaseName":
                     this.ReleaseName = value;
-                    break;
+                    return true;
             }
+
+            return false;
         }
     }
 }
