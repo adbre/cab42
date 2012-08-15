@@ -1,12 +1,12 @@
-namespace Tests
+namespace Tests.C42A.CAB42
 {
     using System;
     using System.Linq;
 
-    using C42A;
-    using C42A.CAB42;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using global::C42A;
+    using global::C42A.CAB42;
 
     [TestClass]
     public class ProjectInfoTests
