@@ -239,6 +239,7 @@
     <Compile Include="CAB42\XmlReplacementRule.cs" />
     <Compile Include="CAB42\XmlReplacementRuleCollection.cs" />
     <Compile Include="CSharp\SizeFormatStandards.cs" />
+    <Compile Include="CSharp\VersionHelper.cs" />
     <Compile Include="ProgramOptions.cs" />
     <Compile Include="Win32\ShellExtension.cs" />
     <Compile Include="Win32\ShellIcon.cs" />

@@ -45,6 +45,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C42A\CSharp\VersionHelperTests.cs" />
     <Compile Include="C42A\ProgramOptionsTests.cs" />
     <Compile Include="C42A\CAB42\ProjectInfoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

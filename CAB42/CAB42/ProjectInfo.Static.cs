@@ -25,6 +25,8 @@ namespace C42A.CAB42
     using System.Text.RegularExpressions;
     using System.Xml.Serialization;
 
+    using C42A.CSharp;
+
     partial class ProjectInfo
     {
         /// <summary>
@@ -166,24 +168,7 @@ namespace C42A.CAB42
             switch (key)
             {
                 case "Version":
-                    var match = Regex.Match(value, @"^v(?<major>[0-9]+)(\.(?<minor>[0-9]+)(\.(?<build>[0-9]+)(\.(?<revision>[0-9]+))?)?)?(\-(?<releaseName>.*))?$");
-                    if (match.Success)
-                    {
-                        var invariant = CultureInfo.InvariantCulture;
-                        this.ProjectVersion = new Version(
-                            Convert.ToInt32(match.Groups["major"].Value, invariant),
-                            match.Groups["minor"].Success ? Convert.ToInt32(match.Groups["minor"].Value, invariant) : 0,
-                            match.Groups["build"].Success ? Convert.ToInt32(match.Groups["build"].Value, invariant) : 0,
-                            match.Groups["revision"].Success ? Convert.ToInt32(match.Groups["revision"].Value, invariant) : 0
-                            );
-                    }
-                    else
-                    {
-                        Version version;
-                        if (!Version.TryParse(value, out version)) throw new FormatException(string.Format("Could not extract version information from input: {0}", value));
-                        this.ProjectVersion = version;
-                    }
-
+                    this.ProjectVersion = VersionHelper.ParseGitDescription(value);
                     return true;
 
                 case "ReleaseName":
