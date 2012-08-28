@@ -1,7 +1,7 @@
-README of cab42
+﻿README of cab42
 ===============
 
-* &copy; Adam Brengesjö, ca.brengesjo@gmail.com, 2011-2012
+* (c) Adam Brengesjö, ca.brengesjo@gmail.com, 2011-2012
 * Licensed under the Apache License, Version 2.0 (the "License")
 
 
